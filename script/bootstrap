@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+function bootstrap {
+  local shome="$(unset CDPATH; cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  local url_jq='https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64'
+
+  case "$(uname -s)" in
+    Darwin)
+     local tmp_jq="$(mktemp -t XXXXXX)"
+     trap "$(printf "rm -f '%q'" "$tmp_jq")" EXIT
+     curl -L -sS -o "$tmp_jq" "$url_jq"
+     chmod 755 "$tmp_jq"
+     mv -f "$tmp_jq" "$shome/bin/jq.tmp"
+     mv -f "$shome/bin/jq.tmp" "$shome/bin/jq"
+     ;;
+  esac
+}
+
+bootstrap
