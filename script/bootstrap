@@ -10,7 +10,7 @@ function bootstrap {
     Darwin)
      local tmp_jq="$(mktemp -t XXXXXX)"
      trap "$(printf "rm -f '%q'" "$tmp_jq")" EXIT
-     curl -L -sS -o "$tmp_jq" "$url_jq"
+     curl -L -o "$tmp_jq" "$url_jq"
      chmod 755 "$tmp_jq"
      mv -f "$tmp_jq" "$shome/bin/jq.tmp"
      mv -f "$shome/bin/jq.tmp" "$shome/bin/jq"
