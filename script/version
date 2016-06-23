@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+function version {
+  local shome="${_jq_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
+  source "$shome/script/profile"
+
+  local ver_jq="$(jq --version 2>&- | cut -d- -f2- || true)"
+  jq -n --arg jq "$ver_jq" '{jq: $jq}'
+}
+
+version "$@"
