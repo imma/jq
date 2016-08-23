@@ -4,7 +4,7 @@ function main {
   local shome="${_jq_home:-"$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"}"
   source "$shome/script/profile"
 
-  if [[ -x "$(type -P jq)" ]]; then
+  if [[ -x "$shome/bin/jq" ]]; then
     return 1
   else
     return 0
