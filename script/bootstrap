@@ -6,14 +6,9 @@ function bootstrap {
 
   local url_jq
   
-
   case "$(uname -s)" in
-    Darwin)
-      url_jq='https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64'
-      ;;
-    *)
-      url_jq='https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64'
-      ;;
+    Darwin) url_jq='https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64' ;;
+    *)      url_jq='https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64' ;;
   esac
 
   local tmp_jq="$(mktemp -t XXXXXX)"
@@ -22,6 +17,8 @@ function bootstrap {
   chmod 755 "$tmp_jq"
   mv -f "$tmp_jq" "$shome/bin/jq.tmp"
   mv -f "$shome/bin/jq.tmp" "$shome/bin/jq"
+
+  block compile virtualenv
 }
 
 bootstrap
