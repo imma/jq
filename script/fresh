@@ -4,11 +4,11 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  if [[ ! -x "$shome/bin/jq" ]]; then
+  if [[ "$(jq --version 2>/dev/null | cut -d- -f2)" != "$JQ_VERSION" ]]; then
     return 1
   fi
 
   return 0
 }
 
-source sub "$0" "$@"
+main "$@"
