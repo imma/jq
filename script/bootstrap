@@ -17,8 +17,6 @@ function bootstrap {
   chmod 755 "$tmp_jq"
   mv -f "$tmp_jq" "$shome/bin/jq.tmp"
   mv -f "$shome/bin/jq.tmp" "$shome/bin/jq"
-
-  block compile virtualenv
 }
 
 bootstrap
