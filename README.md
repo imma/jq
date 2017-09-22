@@ -1,1 +1,1 @@
-Visit http://defn.sh/jq/ or open `docs/index.html`
+content/jq.md
