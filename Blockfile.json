@@ -1,4 +1,6 @@
 {
   "require": [],
-  "versions": {}
+  "versions": {
+    "jq": "stedolan/jq"
+  }
 }

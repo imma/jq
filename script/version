@@ -5,7 +5,7 @@ function version {
   source "$shome/script/profile"
 
   local ver_jq="$(jq --version 2>/dev/null | cut -d- -f2 || true)"
-  jq -n --arg jq "$ver_jq" '{jq: $jq}'
+  jq -n --arg jq "$ver_jq" '{jq: "jq-\($jq)"}'
 }
 
 version "$@"
